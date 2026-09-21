@@ -1,0 +1,20 @@
+python -m venv env     //-- creating virutal environment [package isolation]
+
+env\Scripts\activate     //  activating the environment
+
+pip install django       // installing the django
+
+
+
+django-admin startproject instagram       //  creating project   // cd instagram //dir change
+python manage.py runserver                //  project running
+ctrl + c                                  //  server stop
+
+
+python manage.py startapp user_post       // app create
+
+
+app  -> project --> settings.py  -> installed apps= [app_name]
+
+views  -function  
+urls-   address  -> req  -> view_function
