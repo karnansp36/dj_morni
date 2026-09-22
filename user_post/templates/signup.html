@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Signup form - {{ name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" id="" placeholder="username">
+        <input type="number" name="age" id="" placeholder="age">
+        <input type="text" name="city" placeholder="city">
+        <button>submit</button>
+    </form>
+</body>
+</html>
