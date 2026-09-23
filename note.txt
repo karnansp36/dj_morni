@@ -18,3 +18,5 @@ app  -> project --> settings.py  -> installed apps= [app_name]
 
 views  -function  
 urls-   address  -> req  -> view_function
+
+csrf  = cross site request forgery

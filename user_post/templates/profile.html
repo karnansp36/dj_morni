@@ -1,15 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>profile</h1>
+{% extends "base.html" %}
+
+{% block title %}
+    profile page
+{% endblock %}
+
+ {% block ad %}
+    <h2 style="background-color: blue; color: white;">10% discount</h2>
+{% endblock %}
+
+{% block content %}
+   <h1>profile</h1>
     {% for i in users %}
+    {% if role == "student" %}
        <h1 style="background-color: red; color: white;"> {{ i.name }}</h1>
        <h2>{{ i.age }}</h2>
+       <button>attempt</button>
+         {% elif role == "trainer" %}
+            <h1>{{ i.name }}</h1>
+            <h2>{{ i.age }}</h2>
+            <button>create</button>
+            <button>Edit</button>
+            {% include "btn.html" with title="create" %}
+            {% include "btn.html" with title="edit" %}
+            {% include "btn.html" with title="update"  %}
+        {% else %}
+            <h1>{{ i.name }}</h1>
+            <h2>{{ i.age }}</h2>
+            <button>create</button>
+            <button>Edit</button>
+            <button>delete</button>
+    {% endif %}
     {% endfor %}
-</body>
-</html>
+    <p>role</p>
+{% endblock %}

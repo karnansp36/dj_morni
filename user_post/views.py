@@ -25,4 +25,4 @@ def login(request):
 
 def profile(request):
     student= Students.objects.all()
-    return render(request, "profile.html", {"users":student })
+    return render(request, "profile.html", {"users":student, "role": "trainer" })

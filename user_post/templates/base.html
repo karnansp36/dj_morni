@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        /* From Uiverse.io by JasonMep */ 
+.button {
+  color: #ecf0f1;
+  font-size: 17px;
+  background-color: #e67e22;
+  border: 1px solid #f39c12;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  box-shadow: 0px 6px 0px #d35400;
+  transition: all 0.1s;
+}
+
+.button:active {
+  box-shadow: 0px 2px 0px #d35400;
+  position: relative;
+  top: 2px;
+}
+
+    </style>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+<body>
+    {% block ad %}
+
+    {% endblock %}
+
+    <h1 style="background-color: red;color: white; padding: 10px;">Navbar</h1>
+    {% block content %}
+
+    {% endblock %}
+    <img src="{% static 'assets/mountain.jpg' %}" alt="image" width="300px" height="300px">
+
+     <h1 style="background-color: red;color: white; padding: 10px;">Footer</h1>
+     <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
