@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block content %}
+<a href="{% url 'logout' %}">Logout</a>
+
    <h1>profile</h1>
     {% for i in users %}
     {% if role == "student" %}

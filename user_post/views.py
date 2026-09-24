@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 # Create your views here.
@@ -24,5 +24,7 @@ def login(request):
 
 
 def profile(request):
+    if 'user_id' not in request.session:
+        return redirect('login')
     student= Students.objects.all()
     return render(request, "profile.html", {"users":student, "role": "trainer" })
