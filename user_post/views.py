@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-
+from .utils import auth_required
 # Create your views here.
 from .models import Students
 def signup(request):
@@ -17,14 +17,12 @@ def signup(request):
         form.save()
     return render(request, "signup.html", {"name":"peter"})
 
-
+@auth_required
 def login(request):
     return render(request, "pages/login.html")
 
 
-
+@auth_required
 def profile(request):
-    if 'user_id' not in request.session:
-        return redirect('login')
     student= Students.objects.all()
     return render(request, "profile.html", {"users":student, "role": "trainer" })

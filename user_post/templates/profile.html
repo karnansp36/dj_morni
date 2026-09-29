@@ -9,6 +9,18 @@
 {% endblock %}
 
 {% block content %}
+
+
+  {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <li style="color: red;">{{ message }}</li>
+                {% elif message.tags == 'success' %}
+                    <li style="color: green;">{{ message }}</li>
+                {% endif %}
+            {% endfor %}
+
+
+
 <a href="{% url 'logout' %}">Logout</a>
 
    <h1>profile</h1>
