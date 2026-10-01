@@ -12,10 +12,29 @@
         {% for post in posts %}
             <li>
                 <h2>{{ post.title }}</h2>
+                <p>Posted by {{ post.user.name }}</p>
                 <p>{{ post.content }}</p>
                 {% if post.image %}
                     <img src="{{ post.image.url }}" alt="Post Image" style="max-width: 200px;">
                 {% endif %}
+                <form method="post" action="{% url 'social_post_like' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit">{% if post.is_liked %}Unlike{% else %}Like{% endif %} ({{ post.like_count }})</button>
+                </form>
+                <h3>Comments</h3>
+                <ul>
+                    {% for comment in post.comments.all %}
+                        <li><strong>{{ comment.user.name }}</strong>: {{ comment.content }}</li>
+                    {% empty %}
+                        <li>No comments yet.</li>
+                    {% endfor %}
+                </ul>
+                <form method="post" action="{% url 'social_post_comment' post.id %}">
+                    {% csrf_token %}
+                    <label for="comment-{{ post.id }}">Add a comment</label>
+                    <input id="comment-{{ post.id }}" type="text" name="content" required>
+                    <button type="submit">Comment</button>
+                </form>
             </li>
         {% endfor %}
     </ul>
