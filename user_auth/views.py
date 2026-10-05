@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import Users_dataForm
+from random import randint
+from django.core.mail import send_mail
 # Create your views here.
 from .utils import hash_password, check_password_valid
 from .models import Users_data
@@ -9,6 +11,8 @@ def register(request):
         form = Users_dataForm(request.POST)
         if form.is_valid():
             users = form.save(commit=False) #pass= 123
+            otp = randint(1000, 9999) # Generate a random ID
+            send_mail("OTP Verification", f"Your OTP is: {otp}", "reviewmaster36@gmail.com", [users.email])
             users.password = hash_password(users.password) #sadksfwoe
             users.save()
             return HttpResponse("User registered successfully")
