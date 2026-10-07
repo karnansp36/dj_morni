@@ -39,3 +39,7 @@ def logout(request):
         del request.session['user_id']
         
     return HttpResponse("Logged out successfully")
+
+
+def unknow_user(request):
+    return HttpResponse("You are not logged in. Please log in to access this page.")
