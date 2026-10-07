@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+9w@kk2gklsg&86xfaky$e7w#5a%end&yl531@y1s09flp&f6&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'instagram.middleware.ratelimiting',  # Add the rate limiting middleware
+    'instagram.middleware.RateLimitingMiddleware',  # Add the rate limiting middleware
 ]
 
 ROOT_URLCONF = 'instagram.urls'
